@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>กายทีชสเลเยอร์</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">กายทีชสเลเยอร์</div>
+      <nav>
+        <ul>
+          <li><a href="#" class="nav-link active" data-page="home">หน้าแรก</a></li>
+          <li><a href="#" class="nav-link" data-page="booking">ตารางการศึกษา</a></li>
+          <li><a href="#" class="nav-link" data-page="comments">คอมเมนต์</a></li>
+          <li><a href="#" class="nav-link" data-page="history">ประวัติการเรียน</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <g fill="#ffffff" opacity="0.12">
+        <polygon points="160,95 270,135 160,175 50,135"/>
+        <rect x="150" y="175" width="20" height="48" rx="4"/>
+        <circle cx="255" cy="145" r="6"/>
+        <path d="M860 255 q60 -28 118 0 v58 q-58 -24 -118 0 Z"/>
+        <path d="M978 255 q60 -28 118 0 v58 q-58 -24 -118 0 Z"/>
+        <circle cx="610" cy="85" r="32"/>
+        <rect x="597" y="112" width="26" height="13" rx="3"/>
+        <rect x="975" y="48" width="14" height="86" rx="3" transform="rotate(25 982 91)"/>
+        <polygon points="971,128 994,128 982,150" transform="rotate(25 982 91)"/>
+        <circle cx="120" cy="270" r="18"/>
+        <circle cx="1080" cy="190" r="14"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <h1>เรียนรู้ แบบง่าย เข้าใจได้ไม่ยาก</h1>
+    <p>พัฒนาทักษะของคุณไปกับเรา</p>
+  </div>
+</div>
+
+<!-- ==================== HOME ==================== -->
+<div id="home" class="page-section active">
+  <div class="container">
+    <h2 class="section-title">หมวดหมู่คอร์สเรียน</h2>
+    <div class="course-grid" id="courseGrid"></div>
+
+    <h2 class="section-title" style="margin-top:60px;">แชร์รีวิวของคุณ</h2>
+    <div class="review-panel">
+      <form id="bookingForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>ชื่อของคุณ</label>
+            <input type="text" id="reviewName" placeholder="กรอกชื่อของคุณ" required>
+          </div>
+          <div class="form-group">
+            <label>หมวดวิชา</label>
+            <select id="reviewCategory" required>
+              <option value="">-- เลือกหมวดวิชา --</option>
+              
+              <option>คณิตศาสตร์</option>
+              <option>วิทยาศาสตร์</option>
+              <option>ภาษาไทย</option>
+              <option>ภาษาอังกฤษ</option>
+              <option>สังคมศึกษา</option>
+              <option>คอมพิวเตอร์</option>
+              <option>ศิลปะ</option>
+              <option>การงานอาชีพ</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>คะแนน</label>
+          <div class="star-rating" id="rating">
+            <span data-value="1">☆</span>
+            <span data-value="2">☆</span>
+            <span data-value="3">☆</span>
+            <span data-value="4">☆</span>
+            <span data-value="5">☆</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>ความคิดเห็น</label>
+          <textarea id="reviewComment" rows="4" placeholder="แสดงความคิดเห็นของคุณ..."></textarea>
+        </div>
+        <input type="hidden" id="editIndex" value="">
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" id="submitBtn">โพสต์รีวิว</button>
+          <button type="button" class="btn-cancel" id="cancelEditBtn" style="display:none;" onclick="cancelEdit()">ยกเลิก</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BOOKING ==================== -->
+<div id="booking" class="page-section">
+  <div class="container">
+    <h2 class="section-title">ตารางการศึกษา</h2>
+    <div class="calendar-section">
+      <h3>คอร์สที่บันทึก</h3>
+      <div id="savedCoursesList" class="saved-list"></div>
+      <p id="noSaved" class="no-reviews-msg">ยังไม่มีคอร์สที่บันทึก ลองกดปุ่ม "บันทึกบทเรียน" ในบทที่สนใจดูก่อน!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== COMMENTS ==================== -->
+<div id="comments" class="page-section">
+  <div class="container">
+    <h2 class="section-title">คอมเมนต์</h2>
+    <div id="commentsList"></div>
+    <p id="noReviews" class="no-reviews-msg">ยังไม่มีรีวิว กลับไปหน้าแรกเพื่อเขียนรีวิวได้เลย</p>
+  </div>
+</div>
+
+<!-- ==================== HISTORY ==================== -->
+<div id="history" class="page-section">
+  <div class="container">
+    <div class="section-title-row">
+      <h2 class="section-title">ประวัติการเรียน</h2>
+      <div class="history-sort-wrap">
+        <select id="historySortSelect" onchange="renderHistory()">
+          <option value="default">เรียงตาม: ล่าสุด</option>
+          <option value="high">คะแนนสูงสุด</option>
+          <option value="low">คะแนนต่ำสุด</option>
+        </select>
+      </div>
+    </div>
+    <p id="noHistory" class="no-reviews-msg">ยังไม่มีประวัติการเรียน ลองเรียนบทเรียนดูก่อน!</p>
+    <div id="historyList"></div>
+  </div>
+</div>
+
+<!-- ==================== COURSE DETAIL ==================== -->
+<div id="courseDetail" class="page-section">
+  <div class="container">
+    <button class="btn-back" onclick="goBack()">← กลับ</button>
+    <div id="courseDetailContent"></div>
+  </div>
+</div>
+
+<!-- ==================== QUIZ ==================== -->
+<div id="quizPage" class="page-section">
+  <div class="container">
+    <button class="btn-back" onclick="exitQuiz()">← กลับ</button>
+    <div id="quizContent"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
